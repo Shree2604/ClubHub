@@ -78,4 +78,3 @@ ClubPagetxt = '''
 ---
 *Select an option (1-3) to proceed*
 '''
-
