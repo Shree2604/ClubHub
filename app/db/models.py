@@ -6,13 +6,13 @@ class User:
         self,
         _id: ObjectId | None,
         email: str,
-        password_hash: str,
+        pw_hash: str,
         first_name: str,
         last_name: str,
     ):
         self._id = _id
         self.email = email
-        self.password_hash = password_hash
+        self.pw_hash = pw_hash
         self.first_name = first_name
         self.last_name = last_name
     
@@ -24,7 +24,7 @@ class User:
         return cls(
             _id=doc["_id"],
             email=doc["email"],
-            password_hash=doc["password_hash"],
+            pw_hash=doc["pw_hash"],
             first_name=doc["first_name"],
             last_name=doc["last_name"],
         )
@@ -33,7 +33,7 @@ class User:
         return {
             "_id": ObjectId() if self._id is None else self._id,
             "email": self.email,
-            "password_hash": self.password_hash,
+            "pw_hash": self.pw_hash,
             "first_name": self.first_name,
             "last_name": self.last_name,
         }
