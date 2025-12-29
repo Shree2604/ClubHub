@@ -1,5 +1,5 @@
-from db.client import db
-from db.models import Club
+from app.db.models import Club
+from app.db.client import db
 from datetime import datetime
 from dotenv import load_dotenv
 import os
