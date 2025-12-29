@@ -15,7 +15,7 @@ client = MongoClient(
     serverSelectionTimeoutMS=5000
 )
 
-client.admin.command("ping")
+client.admin.command("ping") #Standard health check used to verify that the connection to the MongoDB database is actually working
 
 db = client["maindb"]
-db.users.create_index("email", unique=True)
+db.users.create_index("email", unique=True) #This command is used to build the index on the "email" field.
