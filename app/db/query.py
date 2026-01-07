@@ -5,7 +5,7 @@ from pymongo.cursor import Cursor
 def find_user(
     _id: ObjectId = None, 
     email : str = None,
-):
+) -> User | None:
     if _id is not None:
         query_filter = {"_id" : _id}
     elif email is not None:
