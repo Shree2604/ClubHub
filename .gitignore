@@ -12,3 +12,6 @@ wheels/
 
 # MacOS Filesystem Extra
 .DS_Store
+
+# Admin config file
+app/config.py
