@@ -1,7 +1,7 @@
 from app.db.models import Role, ObjectId
 from app.db.client import db
 
-def create_role(
+def insert_role(
     name: str,
     club_id: ObjectId
 ) -> Role:
@@ -12,7 +12,8 @@ def create_role(
     role = Role(
         _id=None,
         name=name,
-        club_id=club_id
+        club_id=club_id,
+        count=1
     )
 
     new_role_id = db.roles.insert_one(role.conv_to_doc()).inserted_id

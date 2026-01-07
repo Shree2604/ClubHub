@@ -4,7 +4,7 @@ from app.db.client import db
 # separate third-party imports from local app
 from werkzeug.security import generate_password_hash
 
-def create_user(
+def insert_user(
     email: str,
     password: str, 
     first_name: str,

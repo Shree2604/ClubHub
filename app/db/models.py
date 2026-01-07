@@ -44,14 +44,14 @@ class Club:
             _id : ObjectId | None, 
             name : str, 
             description : str, 
+            club_code : str,
             created_at : datetime, 
-            roles : list
         ):
             self._id = _id
             self.name = name
             self.description = description
+            self.club_code = club_code
             self.created_at = created_at
-            self.roles = roles
 
     def get_id(self):
         return self._id
@@ -62,8 +62,8 @@ class Club:
             _id=doc["_id"],
             name=doc["name"],
             description=doc["description"],
+            club_code=doc["club_code"],
             created_at=doc["created_at"],
-            roles=doc["roles"]
         )
 
     def conv_to_doc(self):
@@ -71,8 +71,8 @@ class Club:
             "_id" : (ObjectId() if self._id is None else self._id),
             "name" : self.name,
             "description" : self.description,
+            "club_code" : self.club_code,
             "created_at" : self.created_at,
-            "roles" : self.roles
         }
 
 class Role:
