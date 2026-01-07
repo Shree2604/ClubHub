@@ -79,12 +79,12 @@ class Role:
     def __init__(self, 
             _id : ObjectId | None, 
             name : str, 
-            club : ObjectId, 
+            club_id : ObjectId, 
             count : int
         ):
             self._id = _id
             self.name = name
-            self.club = club
+            self.club_id = club_id
             self.count = count
     
     def get_id(self):
@@ -95,7 +95,7 @@ class Role:
         return cls(
             _id=doc["_id"],
             name=doc["name"],
-            club=doc["club"],
+            club_id=doc["club_id"],
             count=doc["count"]
         )
 
@@ -103,7 +103,7 @@ class Role:
         return {
             "_id" : (ObjectId() if self._id is None else self._id),
             "name" : self.name,
-            "club" : self.club,
+            "club_id" : self.club_id,
             "count" : self.count
         }
 

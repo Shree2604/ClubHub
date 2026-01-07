@@ -1,9 +1,8 @@
-from app.db.models import User
-from app.db.client import db
+from app.db.user import User, create_user
 from app.db.query import find_user
 
 from pymongo.errors import DuplicateKeyError
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash
 
 def register_user(
     email: str,
@@ -28,16 +27,12 @@ def register_user(
     email = email.lower().strip() 
     # making the email (entered by the user) in lower cases and removing any whitespaces present in it.
 
-    user = User(
-        _id=None,
+    user = create_user(
         email=email,
-        pw_hash=generate_password_hash(password1),
+        password=password1,
         first_name=first_name,
         last_name=last_name
     )
-    
-    new_user_id = db.users.insert_one(user.conv_to_doc()).inserted_id
-    user._id = new_user_id
 
     return user
 
