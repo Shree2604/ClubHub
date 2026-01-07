@@ -25,7 +25,8 @@ def register_user(
     if find_user(email=email) is not None:
         raise ValueError("User with this email already exists!")
 
-    email = email.lower().strip() # making the email (entered by the user) in lower cases and removing any whitespaces present in it.
+    email = email.lower().strip() 
+    # making the email (entered by the user) in lower cases and removing any whitespaces present in it.
 
     user = User(
         _id=None,

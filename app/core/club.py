@@ -4,21 +4,20 @@ from datetime import datetime
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
-
-secret_key_Epoch = os.getenv("secret_key_epoch")
-
 def create_club(
     name: str,
     description: str,
-    add_roles: list,
+    roles: list,
     secret_key: str
 ) -> Club:
+
+    load_dotenv()
+    secret_club_key = os.getenv("SECRET_KEY")
     
-    if not all([name, description, add_roles, secret_key]):
+    if not all([name, description, roles, secret_key]):
         raise ValueError("All Fields are compulsory")
     
-    if secret_key != secret_key_Epoch:
+    if secret_key != secret_club_key:
         raise ValueError("Secret key doesn't Match")
     
     club = Club(
@@ -26,8 +25,10 @@ def create_club(
         name=name,
         description=description,
         created_at=datetime.now(),
-        roles=add_roles
+        roles=[]
     )
 
-    db.ClubCreation.insert_one(club.conv_to_doc())
+    new_club_id = db.clubs.insert_one(club.conv_to_doc()).inserted_id
+    club._id = new_club_id
+
     return club
