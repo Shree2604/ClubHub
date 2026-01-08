@@ -24,8 +24,8 @@ Logintxt = '''
 # 🔐 CLUBHUB AUTHENTICATION PORTAL
 
 ##  User Login/Sign Up
-### (1) **👤 Login with an Existing Account**
-### (2) **🆕 Create a New Account**
+### (1) **🆕 Create a New Account**
+### (2) **👤 Login with an Existing Account**
 ### (3) **👋 Go back to Welcome Page**
 
 ---
