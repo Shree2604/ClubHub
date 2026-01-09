@@ -1,6 +1,7 @@
 from app.tui import text
 from app.core.user import create_user, authenticate_user
 from app.core.club import create_club
+from app.db.models import User 
 
 # separate app imports from third party imports
 from rich.console import Console
@@ -53,7 +54,8 @@ def login():
                 console.print("\n[bold green]Account Successfully Created[/bold green]")
                 console.print("[green]Redirecting to homepage...[/green]")
                 pause()
-                # add homepage function here
+                homepage(user)
+
             else:
                 console.print("\n[bold red]Something went wrong, please try again![/bold red]")
                 console.print("[yellow]Redirecting back to login...[/yellow]")
@@ -74,3 +76,53 @@ def login():
             console.print("[yellow]Redirecting back to login...[/yellow]")
             pause()
             login()
+
+def homepage(user:User):
+    clear_terminal()
+    console.print(Markdown(text.homepage))
+    inp = int(input("Enter the option number: "))
+    clear_terminal()
+
+    match inp:
+        case 1:
+            name = str(input("Enter the name of the club: "))
+            description = str(input("Enter the description for the club: "))
+            club_code = str(input("Enter the club code: "))
+            secret_key = str(input("Enter the secret key: "))
+
+            club = create_club(
+                name=name,
+                description=description,
+                club_code=club_code,
+                secret_key=secret_key,
+                creator_user_id=user._id
+            )
+
+            if club is not None:
+                console.print("\n[bold green]Club Created Successfully!![/bold green]")
+                console.print("[green]Redirecting to Clubpage...[/green]")
+                #will going to add clubpage
+            
+            else:
+                console.print("\n[bold red]Something went wrong, please try again![/bold red]")
+                console.print("[yellow]Redirecting back to Homepage...[/yellow]")
+                pause()
+                homepage(user)
+
+        case 2:
+            console.print("\n[yellow]Feature will be added later[/yellow]")
+            console.print("[yellow]Redirecting back to login...[/yellow]")
+            pause()
+            homepage(user)
+
+        case 3:
+            console.print("\n[yellow]Feature will be added later[/yellow]")
+            console.print("[yellow]Redirecting back to login...[/yellow]")
+            pause()
+            homepage(user)
+
+        case _:
+            console.print("\n[bold red]Please fill a valid input[/bold red]")
+            console.print("[yellow]Redirecting back to login...[/yellow]")
+            pause()
+            homepage(user)
