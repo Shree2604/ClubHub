@@ -1,10 +1,9 @@
 from app.core.club import create_club
 from app.core.user import create_user, authenticate_user
-from app.tui.run import Welcome, login
+from app.tui.run import welcome
 
 def main():
-    Welcome()
-
+    welcome()
 
 if __name__ == "__main__":
     main()

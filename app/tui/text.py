@@ -1,4 +1,4 @@
-Welcometxt = '''
+welcome = '''
 # 🚀 WELCOME TO CLUBHUB!!!! 🚀
 
 ## 🏫 Campus-Focused Club Management
@@ -20,7 +20,7 @@ Welcometxt = '''
 '''
 
 
-Logintxt = '''
+login = '''
 # 🔐 CLUBHUB AUTHENTICATION PORTAL
 
 ##  User Login/Sign Up
@@ -32,7 +32,7 @@ Logintxt = '''
 select an option (1-3) to proceed
 '''
 
-Homepagetxt = '''
+homepage = '''
 # 🏠 CLUBHUB DASHBOARD
 
 ## 1️⃣ Create New Club
@@ -56,7 +56,7 @@ Explore other clubs and see what's happening.
 '''
 
 
-ClubPagetxt = '''
+clubpage = '''
 # 🛡️ CLUBPAGE
 
 ## [1] 📢 Announcements
