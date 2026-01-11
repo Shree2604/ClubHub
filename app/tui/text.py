@@ -1,4 +1,7 @@
-welcome = '''
+from rich.markdown import Markdown
+from rich.panel import Panel
+
+welcome = Panel(Markdown('''
 # 🚀 WELCOME TO CLUBHUB!!!! 🚀
 
 ## 🏫 Campus-Focused Club Management
@@ -17,10 +20,10 @@ welcome = '''
 - **📊 Analytics**: Track your participation and club growth over time.
 
 > "A platform designed for clubs, not a generic chat server."
-'''
+'''))
 
 
-login = '''
+login = Panel(Markdown('''
 # 🔐 CLUBHUB AUTHENTICATION PORTAL
 
 ##  User Login/Sign Up
@@ -29,23 +32,23 @@ login = '''
 ### (3) **👋 Go back to Welcome Page**
 
 ---
-select an option (1-3) to proceed
-'''
+*Select an option (1-3) to proceed*
+'''))
 
-homepage = '''
+homepage = Panel(Markdown('''
 # 🏠 CLUBHUB DASHBOARD
 
-## 1️⃣ Create New Club
+### 1️⃣ Create New Club
 Start a new community at **IIIT Sri City**.
-> **🔒 Restriction:** Requires an **Admin Secret Key**.
-> **👑 Outcome:** You will be automatically assigned as the **Club Lead**.
+- **🔒 Restriction:** Requires an **Admin Secret Key**.
+- **👑 Outcome:** You will be automatically assigned as the **Club Lead**.
 
-## 2️⃣ Your Active Clubs
+### 2️⃣ Your Active Clubs
 Access the clubs you are currently a member of.
 - View **Private Chats** & **Announcements**
 - Check your **Points** & **Leaderboard Rank**
 
-## 3️⃣ Browse Campus
+### 3️⃣ Browse Campus
 Explore other clubs and see what's happening.
 - View **Public Announcements**
 - Request to join new communities
@@ -53,28 +56,28 @@ Explore other clubs and see what's happening.
 
 ---
 *Select an option (1-3) to proceed*
-'''
+'''))
 
 
-clubpage = '''
+clubpage = Panel(Markdown('''
 # 🛡️ CLUBPAGE
 
-## [1] 📢 Announcements
+### [1] 📢 Announcements
 *Stay updated with the latest Updates inside the Club.*
 - **🔓 Public:** Public News and Updates
 - **🔒 Private:** Core team meeting schedules
 
-## [2] 📺 Channels
+### [2] 📺 Channels
 *Join Different Channels and Communicate throughout the Club:*
 - **#General** (Public Discussion)
 - **#Events** (Planning & Coordination)
 - **#Tech-Team** (Dev Updates)
 - **#Specified Project Related**
 
-## [3] 🛠️ Admin Zone (Leads & Co-Leads)
+### [3] 🛠️ Admin Zone (Leads & Co-Leads)
 > **restricted:** Only verified Club Leads can access this section.
 - **[+] Create New Channel**: Set up a new topic-specific group chat.
 
 ---
 *Select an option (1-3) to proceed*
-'''
+'''))

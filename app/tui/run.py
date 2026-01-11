@@ -1,12 +1,10 @@
 from app.tui import text
-from app.core.user import create_user, authenticate_user
-from app.core.club import create_club
-from app.db.models import User 
+from app.core.user import User, create_user, authenticate_user
+from app.core.club import Club, create_club
 
 # separate app imports from third party imports
 from rich.console import Console
 from rich.table import Table
-from rich.markdown import Markdown
 
 import os
 import time
@@ -24,13 +22,13 @@ def pause():
 
 def welcome():
     clear_terminal()
-    console.print(Markdown(text.welcome))
+    console.print(text.welcome)
     input("\nPress any key to continue to login page")
     login()
 
 def login():
     clear_terminal()
-    console.print(Markdown(text.login))
+    console.print(text.login)
     inp = int(input("Enter the option number: "))
     clear_terminal()
 
@@ -55,7 +53,6 @@ def login():
                 console.print("[green]Redirecting to homepage...[/green]")
                 pause()
                 homepage(user)
-
             else:
                 console.print("\n[bold red]Something went wrong, please try again![/bold red]")
                 console.print("[yellow]Redirecting back to login...[/yellow]")
@@ -63,23 +60,34 @@ def login():
                 login()
 
         case 2: 
-            console.print("\n[yellow]Feature will be added later[/yellow]")
-            console.print("[yellow]Redirecting back to login...[/yellow]")
-            pause()
-            login()
+            email = str(input("Enter your E-mail: "))
+            password = str(input("Enter your password: "))
+
+            user = authenticate_user(email=email, password=password)
+
+            if user is not None:
+                console.print("\n[bold green]Logged in Successfully[/bold green]")
+                console.print("[green]Redirecting to homepage...[/green]")
+                pause()
+                homepage(user)
+            else:
+                console.print("\n[bold red]Something went wrong, please try again![/bold red]")
+                console.print("[yellow]Redirecting back to login...[/yellow]")
+                pause()
+                login()
             
         case 3:
             welcome()
 
         case _:
-            console.print("\n[bold red]Please fill a valid input[/bold red]")
+            console.print("\n[bold red]Please enter a valid input[/bold red]")
             console.print("[yellow]Redirecting back to login...[/yellow]")
             pause()
             login()
 
 def homepage(user:User):
     clear_terminal()
-    console.print(Markdown(text.homepage))
+    console.print(text.homepage)
     inp = int(input("Enter the option number: "))
     clear_terminal()
 
@@ -112,19 +120,19 @@ def homepage(user:User):
 
         case 2:
             console.print("\n[yellow]Feature will be added later[/yellow]")
-            console.print("[yellow]Redirecting back to login...[/yellow]")
+            console.print("[yellow]Redirecting back to homepage...[/yellow]")
             pause()
             homepage(user)
 
         case 3:
             console.print("\n[yellow]Feature will be added later[/yellow]")
-            console.print("[yellow]Redirecting back to login...[/yellow]")
+            console.print("[yellow]Redirecting back to homepage...[/yellow]")
             pause()
             homepage(user)
 
         case _:
             console.print("\n[bold red]Please fill a valid input[/bold red]")
-            console.print("[yellow]Redirecting back to login...[/yellow]")
+            console.print("[yellow]Redirecting back to homepage...[/yellow]")
             pause()
             homepage(user)
 
