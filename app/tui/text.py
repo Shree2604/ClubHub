@@ -1,4 +1,7 @@
-welcome = '''
+from rich.markdown import Markdown
+from rich.panel import Panel
+
+welcome = Panel(Markdown('''
 # 🚀 WELCOME TO CLUBHUB!!!! 🚀
 
 ## 🏫 Campus-Focused Club Management
@@ -17,10 +20,10 @@ welcome = '''
 - **📊 Analytics**: Track your participation and club growth over time.
 
 > "A platform designed for clubs, not a generic chat server."
-'''
+'''))
 
 
-login = '''
+login = Panel(Markdown('''
 # 🔐 CLUBHUB AUTHENTICATION PORTAL
 
 ##  User Login/Sign Up
@@ -30,9 +33,9 @@ login = '''
 
 ---
 *Select an option (1-3) to proceed*
-'''
+'''))
 
-homepage = '''
+homepage = Panel(Markdown('''
 # 🏠 CLUBHUB DASHBOARD
 
 ### 1️⃣ Create New Club
@@ -53,10 +56,10 @@ Explore other clubs and see what's happening.
 
 ---
 *Select an option (1-3) to proceed*
-'''
+'''))
 
 
-clubpage = '''
+clubpage = Panel(Markdown('''
 # 🛡️ CLUBPAGE
 
 ### [1] 📢 Announcements
@@ -77,4 +80,4 @@ clubpage = '''
 
 ---
 *Select an option (1-3) to proceed*
-'''
+'''))
