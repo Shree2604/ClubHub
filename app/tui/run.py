@@ -101,7 +101,8 @@ def homepage(user:User):
             if club is not None:
                 console.print("\n[bold green]Club Created Successfully!![/bold green]")
                 console.print("[green]Redirecting to Clubpage...[/green]")
-                #will going to add clubpage
+                pause()
+                clubpage()
             
             else:
                 console.print("\n[bold red]Something went wrong, please try again![/bold red]")
@@ -126,3 +127,9 @@ def homepage(user:User):
             console.print("[yellow]Redirecting back to login...[/yellow]")
             pause()
             homepage(user)
+
+def clubpage():
+    clear_terminal()
+    console.print(Markdown(text.clubpage))
+    inp = int(input("Enter the option number: "))
+    clear_terminal()
