@@ -138,6 +138,6 @@ def homepage(user:User):
 
 def clubpage():
     clear_terminal()
-    console.print(Markdown(text.clubpage))
+    console.print(text.clubpage)
     inp = int(input("Enter the option number: "))
     clear_terminal()
