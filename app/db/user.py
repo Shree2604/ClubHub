@@ -1,4 +1,4 @@
-from app.db.models import User
+from app.db.models import User, ObjectId
 from app.db.client import db
 
 # separate third-party imports from local app

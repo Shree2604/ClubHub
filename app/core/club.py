@@ -1,4 +1,4 @@
-from app.db.club import Club, insert_club, ObjectId
+from app.db.club import Club, ObjectId, insert_club
 from app.db.role import insert_role
 from app.db.membership import insert_membership
 from app.config import ADMIN_BOOTSTRAP_KEYS

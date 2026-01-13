@@ -1,5 +1,5 @@
-from app.db.user import User, insert_user
-from app.db.query import find_user
+from app.db.user import User, insert_user, ObjectId
+from app.db.query import find_user, find_memberships, find_club
 
 from pymongo.errors import DuplicateKeyError
 from werkzeug.security import check_password_hash
@@ -36,7 +36,10 @@ def create_user(
 
     return user
 
-def authenticate_user(email : str, password: str) -> User:
+def authenticate_user(
+    email : str,
+    password: str
+) -> User:
     remote_user = find_user(email=email)
 
     if remote_user is None:
@@ -46,3 +49,14 @@ def authenticate_user(email : str, password: str) -> User:
             return remote_user
         else:
             raise ValueError("Passwords do not match!")
+
+def get_user_clubs(
+    user : User
+) -> list:
+    memberships = find_memberships(user_id=user._id)
+
+    club_list = list()
+    for membership in memberships:
+        club_list.append(find_club(_id=membership.club_id))
+
+    return club_list
