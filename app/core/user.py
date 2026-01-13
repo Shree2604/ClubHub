@@ -1,5 +1,7 @@
-from app.db.user import User, insert_user, ObjectId
-from app.db.query import find_user, find_memberships, find_club
+from app.db.user import User, ObjectId, insert_user, find_user
+from app.db.club import Club, find_club
+from app.db.role import Role, find_role
+from app.db.membership import find_memberships
 
 from pymongo.errors import DuplicateKeyError
 from werkzeug.security import check_password_hash
@@ -59,4 +61,15 @@ def get_user_clubs(
     for membership in memberships:
         club_list.append(find_club(_id=membership.club_id))
 
-    return club_list
+    if club_list == []:
+        return None
+    else:
+        return club_list
+
+def get_user_role(
+    user : User,
+    club : Club
+) -> Role:
+    membership = find_memberships(user_id=user._id, club_id=club._id)[0]
+    user_role = find_role(_id=membership.role_id)
+    return user_role

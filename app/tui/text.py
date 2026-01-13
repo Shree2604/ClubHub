@@ -69,10 +69,10 @@ clubpage = Panel(Markdown('''
 
 ### [2] 📺 Channels
 *Join Different Channels and Communicate throughout the Club:*
-- **#General** (Public Discussion)
-- **#Events** (Planning & Coordination)
-- **#Tech-Team** (Dev Updates)
-- **#Specified Project Related**
+- **General** (Public Discussion)
+- **Events** (Planning & Coordination)
+- **Tech-Team** (Dev Updates)
+- **Specified Project Related**
 
 ### [3] 🛠️ Admin Zone (Leads & Co-Leads)
 > **restricted:** Only verified Club Leads can access this section.

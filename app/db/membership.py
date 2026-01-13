@@ -1,7 +1,5 @@
-from app.db.models import Membership, ObjectId
+from app.db.models import Membership, ObjectId, datetime
 from app.db.client import db
-
-from datetime import datetime
 
 def insert_membership(
     user_id: ObjectId,
@@ -22,3 +20,34 @@ def insert_membership(
     membership._id = new_membership_id
 
     return membership
+
+def find_memberships(
+    _id : ObjectId = None,
+    user_id: ObjectId = None, 
+    club_id: ObjectId = None, 
+    role_id: ObjectId = None,
+) -> list | None:
+
+    query_filter = dict()
+
+    if _id is not None:
+        query_filter.update({"_id" : _id})
+    elif user_id is not None:
+        query_filter.update({"user_id" : user_id})
+    elif club_id is not None:
+        query_filter.update({"club_id" : club_id})
+    elif role_id is not None:
+        query_filter.update({"role_id" : role_id})
+    else:
+        raise ValueError("Atleast one query must be specified for search")
+    
+    memberships = list()
+
+    with db.memberships.find(filter=query_filter) as cursor:
+        for doc in cursor:
+            memberships.append(Membership.conv_to_obj(doc))
+
+    if memberships == []:
+        return None
+    else:
+        return memberships

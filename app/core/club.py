@@ -1,4 +1,4 @@
-from app.db.club import Club, ObjectId, insert_club
+from app.db.club import Club, ObjectId, insert_club, get_club_member_count
 from app.db.role import insert_role
 from app.db.membership import insert_membership
 from app.config import ADMIN_BOOTSTRAP_KEYS
@@ -34,3 +34,13 @@ def create_club(
         print(e)
 
     return club
+
+def club_member_count(
+    club : Club
+) -> int:
+    mem_count = get_club_member_count(club=club)
+    
+    if mem_count == 0:
+        raise ValueError("Club not Found!")
+    else:
+        return mem_count

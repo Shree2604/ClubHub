@@ -20,3 +20,19 @@ def insert_role(
     role._id = new_role_id
 
     return role
+
+def find_role(
+    _id : ObjectId = None
+) -> Role | None:
+    # Add name based searching later
+    if _id is not None:
+        query_filter = {"_id" : _id}
+    else:
+        raise ValueError("Atleast one query must be specified for search")
+    
+    role_doc = db.roles.find_one(filter=query_filter)
+    
+    if role_doc is None:
+        return None
+    else:
+        return Role.conv_to_obj(role_doc)
