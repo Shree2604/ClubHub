@@ -44,9 +44,9 @@ def get_club_member_count(
 ) -> int:
 
     if club is not None:
-        query_filter = {"_id" : club._id}
+        query_filter = {"club_id" : club._id}
     else:
         raise ValueError("Atleast one query must be specified for search")
     
-    count = db.clubs.count_documents(filter=query_filter)  
+    count = db.memberships.count_documents(filter=query_filter)  
     return count

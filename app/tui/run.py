@@ -65,8 +65,7 @@ def login():
 
         case 2: 
             email = str(input("Enter your E-mail: "))
-            password = str(input("Enter your password: "))
-
+            password = Prompt.ask("Enter a password: ", password=True, console=console)
             user = authenticate_user(email=email, password=password)
 
             if user is not None:
@@ -130,7 +129,7 @@ def homepage(user : User):
                 pause()
                 homepage(user)
             else:
-                club_cards = []
+                club_cards = list()
                 for index, club in enumerate(user_clubs, start=1):
                     content = Group(
                         Text(f"\nRole : {get_user_role(user, club).name}", style="bold", justify="center"),
